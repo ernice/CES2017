@@ -29,6 +29,21 @@
 
 #include "playlistwithmetadata.h"
 
+QVariantList readMusicFile(const QString &path)
+{
+    QVariantList ret;
+    QDir dir(path);
+    for (const auto &entry : dir.entryList(QDir::Dirs | QDir::Files | QDir::NoDotAndDotDot, QDir::Name)) {
+        QFileInfo fileInfo(dir.absoluteFilePath(entry));
+        if (fileInfo.isDir()) {
+            ret.append(readMusicFile(fileInfo.absoluteFilePath()));
+        } else if (fileInfo.isFile()) {
+            ret.append(QUrl::fromLocalFile(fileInfo.absoluteFilePath()));
+        }
+    }
+    return ret;
+}
+
 int main(int argc, char *argv[])
 {
 #ifdef HAVE_LIBHOMESCREEN
@@ -48,10 +63,7 @@ int main(int argc, char *argv[])
 
     QVariantList mediaFiles;
     for (const auto &music : QStandardPaths::standardLocations(QStandardPaths::MusicLocation)) {
-        QDir dir(music);
-        for (const auto &file : dir.entryList(QStringList(), QDir::Files, QDir::Name)) {
-            mediaFiles.append(QUrl::fromLocalFile(dir.absoluteFilePath(file)));
-        }
+        mediaFiles.append(readMusicFile(music));
     }
 
     QQmlApplicationEngine engine;
