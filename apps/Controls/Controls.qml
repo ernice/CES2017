@@ -80,7 +80,7 @@ ApplicationWindow {
                     inputMethodHints: Qt.ImhNoAutoUppercase | Qt.ImhSensitiveData | Qt.ImhNoPredictiveText
                 }
 
-                Label { text: 'ToogleButton:' }
+                Label { text: 'ToggleButton:' }
                 ToggleButton {
                     onImage: './images/HMI_HVAC_AC_Active.svg'
                     offImage: './images/HMI_HVAC_AC_Inactive.svg'
