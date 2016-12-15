@@ -189,10 +189,30 @@ SettingPage {
 
          }
          Button {
+             id: removeButton
+             anchors.top:parent.top
+             anchors.topMargin: 15
+             anchors.right: parent.right
+             anchors.rightMargin: 10
+
+             text: "X"
+             MouseArea {
+                 anchors.fill: parent
+                 onClicked: {
+                     request(btAPIpath + 'remove_device?value=' + btAddr.text, function (o) {
+                         console.log(o.responseText)
+                     })
+                     btDeviceList.remove(findDevice(btAddr.text))
+                 }
+             }
+
+         }
+
+         Button {
           id: connectButton
           anchors.top:parent.top
           anchors.topMargin: 15
-          anchors.right: parent.right
+          anchors.right: removeButton.left
           anchors.rightMargin: 10
 
           text:(btConnectstatus.text == "True")? "Disconnect":((btPairable.text == "True")? "Connect":"Pair")
@@ -231,26 +251,6 @@ SettingPage {
               }
             }
           }
-          /*Image{
-             id: removeDevice
-             anchors.top:parent.top
-             anchors.topMargin: 15
-             anchors.right: parent.right
-             anchors.rightMargin: 5
-             width: 25
-             height: 25
-             source: "component/images/trash.png"
-
-             MouseArea {
-                       anchors.fill: parent
-                       onClicked: {
-                                  request(btAPIpath + 'remove_device?value=' + btAddr.text, function (o) {
-                                      console.log(o.responseText)
-                                  })
-                                  btDeviceList.remove(findDevice(btAddr.text))
-                       }
-             }
-           }*/
         }
       }
 
