@@ -19,7 +19,50 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.0
 
 ApplicationWindow {
+    //visible: true;
     id: root
+    function languageChanged(lang) {
+        //console.log("land is ", lang)
+        if(lang === 'fr') {
+            unit.text = 'KMH'
+            speedvalue.text = '100,000.5 KM'
+            tireLeftFront.title = 'PNEU AVANT GAUCHE'
+            tireLeftFront.pressure = '1.59 BAR'
+            tireRightFront.title = 'PNEU AVANT DROIT'
+            tireRightFront.pressure = '1.67 BAR'
+            tireLeftRear.title = 'PNEU ARRIERE GAUCHE'
+            tireLeftRear.pressure = '2.16 BAR'
+            tireRightRear.title = 'PNEU ARRIERE DROIT'
+            tireRightRear.pressure = '2.28 BAR'
+            labelSpeed.text = 'VITESSE (KMH)'
+            levelUnit.text = 'NIVEAU'
+            levelValue.text = '34 LITRES'
+            levelRange.text = 'AUTONOMIE'
+            levelRangeValue.text = '369 KM'
+            levelAverage.text = 'MOY'
+            levelAverageValue.text = '9.2 L/100KM'
+            fuel.text = 'CARBURANT'
+        } else {
+            unit.text = 'MPH'
+            speedvalue.text = '100,000.5 MI'
+            tireLeftFront.title = 'LEFT FRONT TIRE'
+            tireLeftFront.pressure = '23.1 PSI'
+            tireRightFront.title = 'RIGHT FRONT TIRE'
+            tireRightFront.pressure = '24.2 PSI'
+            tireLeftRear.title = 'LEFT REAR TIRE'
+            tireLeftRear.pressure = '31.35 PSI'
+            tireRightRear.title = 'RIGHT REAR TIRE'
+            tireRightRear.pressure = '33.0 PSI'
+            labelSpeed.text = 'SPEED (MPH)'
+            levelUnit.text = 'LEVEL'
+            levelValue.text = '9 GALLONS'
+            levelRange.text = 'RANGE'
+            levelRangeValue.text = '229 MI'
+            levelAverage.text = 'AVG'
+            levelAverageValue.text = '25.5 MPG'
+            fuel.text = 'FUEL'
+        }
+    }
 
     Label {
         id: speed
@@ -37,6 +80,7 @@ ApplicationWindow {
         font.pixelSize: 64
     }
     Label {
+        id: speedvalue
         anchors.left: unit.left
         anchors.top: unit.bottom
         text: '100,000.5 MI'
@@ -51,6 +95,7 @@ ApplicationWindow {
     }
 
     TirePressure {
+        id: tireLeftFront
         anchors.right: car.left
         anchors.rightMargin: -20
         anchors.top: car.top
@@ -60,6 +105,7 @@ ApplicationWindow {
     }
 
     TirePressure {
+        id: tireLeftRear
         anchors.right: car.left
         anchors.rightMargin: -20
         anchors.bottom: car.bottom
@@ -69,6 +115,7 @@ ApplicationWindow {
     }
 
     TirePressure {
+        id: tireRightFront
         mirror: true
         anchors.left: car.right
         anchors.leftMargin: -20
@@ -79,10 +126,11 @@ ApplicationWindow {
     }
 
     TirePressure {
+        id: tireRightRear
         mirror: true
         anchors.left: car.right
         anchors.leftMargin: -20
-        anchors.bottom : car.bottom
+        anchors.bottom: car.bottom
         anchors.bottomMargin: 120
         title: 'RIGHT REAR TIRE'
         pressure: '33.0 PSI'
@@ -102,6 +150,7 @@ ApplicationWindow {
             Layout.fillWidth: true
             value: 0.25
             Label {
+                id: labelSpeed
                 anchors.left: parent.left
                 anchors.top: parent.bottom
                 anchors.topMargin: 10
@@ -130,6 +179,7 @@ ApplicationWindow {
                     columns: 2
                     rowSpacing: -10
                     Label {
+                        id: levelUnit
                         Layout.fillWidth: true
                         Layout.preferredWidth: 3
                         Layout.fillHeight: true
@@ -139,6 +189,7 @@ ApplicationWindow {
                         font.pixelSize: 24
                     }
                     Label {
+                        id: levelValue
                         Layout.fillWidth: true
                         Layout.preferredWidth: 4
                         Layout.fillHeight: true
@@ -149,6 +200,7 @@ ApplicationWindow {
                         color: '#66FF99'
                     }
                     Label {
+                        id: levelRange
                         Layout.fillWidth: true
                         Layout.preferredWidth: 3
                         Layout.fillHeight: true
@@ -158,6 +210,7 @@ ApplicationWindow {
                         font.pixelSize: 24
                     }
                     Label {
+                        id: levelRangeValue
                         Layout.fillWidth: true
                         Layout.preferredWidth: 4
                         Layout.fillHeight: true
@@ -168,6 +221,7 @@ ApplicationWindow {
                         color: '#66FF99'
                     }
                     Label {
+                        id: levelAverage
                         Layout.fillWidth: true
                         Layout.preferredWidth: 3
                         Layout.fillHeight: true
@@ -177,6 +231,7 @@ ApplicationWindow {
                         font.pixelSize: 24
                     }
                     Label {
+                        id: levelAverageValue
                         Layout.fillWidth: true
                         Layout.preferredWidth: 4
                         Layout.fillHeight: true
@@ -190,6 +245,7 @@ ApplicationWindow {
             }
 
             Label {
+                id: fuel
                 anchors.left: parent.left
                 anchors.top: parent.bottom
                 anchors.topMargin: 10
