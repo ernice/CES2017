@@ -26,13 +26,13 @@ ApplicationWindow {
         if(lang === 'fr') {
             unit.text = 'KMH'
             speedvalue.text = '100,000.5 KM'
-            tireLeftFront.title = 'PNEU AVANT GAUCHE'
+            tireLeftFront.title = 'PNEU\nAVANT GAUCHE'
             tireLeftFront.pressure = '1.59 BAR'
-            tireRightFront.title = 'PNEU AVANT DROIT'
+            tireRightFront.title = 'PNEU\nAVANT DROIT'
             tireRightFront.pressure = '1.67 BAR'
-            tireLeftRear.title = 'PNEU ARRIERE GAUCHE'
+            tireLeftRear.title = 'PNEU\nARRIERE GAUCHE'
             tireLeftRear.pressure = '2.16 BAR'
-            tireRightRear.title = 'PNEU ARRIERE DROIT'
+            tireRightRear.title = 'PNEU\nARRIERE DROIT'
             tireRightRear.pressure = '2.28 BAR'
             labelSpeed.text = 'VITESSE (KMH)'
             levelUnit.text = 'NIVEAU'
@@ -176,6 +176,8 @@ ApplicationWindow {
                 source: './images/HMI_Dashboard_Fuel_Details.svg'
                 GridLayout {
                     anchors.fill: parent
+                    anchors.left: parent.left
+                    anchors.leftMargin: 100
                     columns: 2
                     rowSpacing: -10
                     Label {
