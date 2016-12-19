@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = dashboard
-QT = quickcontrols2
+QT = quickcontrols2 websockets
 
 config_libhomescreen {
     CONFIG += link_pkgconfig
@@ -8,8 +8,12 @@ config_libhomescreen {
     DEFINES += HAVE_LIBHOMESCREEN
 }
 
-SOURCES = main.cpp
+SOURCES = main.cpp \
+    usermanagement.cpp
 
 RESOURCES += \
     dashboard.qrc \
     images/images.qrc
+
+HEADERS += \
+    usermanagement.h

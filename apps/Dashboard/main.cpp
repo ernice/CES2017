@@ -18,7 +18,7 @@
 #include <QtGui/QGuiApplication>
 #include <QtQml/QQmlApplicationEngine>
 #include <QtQuickControls2/QQuickStyle>
-
+#include "usermanagement.h"
 #ifdef HAVE_LIBHOMESCREEN
 #include <libhomescreen.hpp>
 #endif
@@ -40,6 +40,9 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     engine.load(QUrl(QStringLiteral("qrc:/Dashboard.qml")));
+
+    UserManagement userManagement(engine.rootObjects().first());
+    Q_UNUSED(userManagement);
 
     return app.exec();
 }
