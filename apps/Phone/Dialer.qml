@@ -104,6 +104,7 @@ Item {
             Layout.alignment: Qt.AlignHCenter
             onImage: './images/HMI_Phone_Hangup.svg'
             offImage: './images/HMI_Phone_Call.svg'
+            opacity: number.text.length > 0 ? 1 : 0.25
 
             Loader {
                 id: ringtone
