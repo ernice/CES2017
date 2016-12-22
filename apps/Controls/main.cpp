@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
     }
 #endif
 
-    setenv("QT_IM_MODULE", "qtvirtualkeyboard", 1);
+//    setenv("QT_IM_MODULE", "qtvirtualkeyboard", 1);
 
     QGuiApplication app(argc, argv);
 

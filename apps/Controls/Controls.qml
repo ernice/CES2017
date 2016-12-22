@@ -17,7 +17,6 @@
 import QtQuick 2.6
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.0
-import QtQuick.VirtualKeyboard 2.1
 import AGL.Demo.Controls 1.0
 
 ApplicationWindow {
@@ -102,12 +101,12 @@ ApplicationWindow {
                 Item { Layout.fillHeight: true }
             }
         }
-        InputPanel {
-            id: inputPanel
+        Keyboard {
+            id: keyboard
             Layout.fillWidth: true
             Layout.fillHeight: true
             z: 99
-            visible: active
+            target: root.activeFocusControl
         }
     }
 }
