@@ -95,11 +95,17 @@ Item {
             onImage: './images/HMI_Phone_Hangup.svg'
             offImage: './images/HMI_Phone_Call.svg'
 
-            SoundEffect {
+            Loader {
                 id: ringtone
-                source: './Phone.wav'
-                loops: SoundEffect.Infinite
-                category: 'phone'
+                active: false
+                sourceComponent: Component {
+                    SoundEffect {
+                        loops: SoundEffect.Infinite
+                        source: './Phone.wav'
+                        category: 'phone'
+                        Component.onCompleted: play()
+                    }
+                }
             }
 
             onCheckedChanged: {
@@ -113,11 +119,11 @@ Item {
                     if (contact.name === '')
                         contact.name = 'Unknown'
                     history.insert(0, contact)
-                    ringtone.play()
+                    ringtone.active = true
                 } else {
                     name.text = ''
                     number.text = ''
-                    ringtone.stop()
+                    ringtone.active = false
                 }
             }
         }
