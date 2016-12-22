@@ -56,6 +56,16 @@ Item {
             TextField {
                 id: number
                 readOnly: true
+
+                ImageButton {
+                    anchors.right: parent.right
+                    anchors.verticalCenter: parent.verticalCenter
+                    offImage: './images/HMI_Phone_Back_Icon.svg'
+                    onClicked: {
+                        if (number.text.length > 0)
+                            number.text = number.text.substring(0, number.text.length - 1)
+                    }
+                }
             }
         }
 
