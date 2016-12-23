@@ -75,14 +75,17 @@ ApplicationWindow {
                         Layout.fillHeight: true
                         Row {
                             spacing: 20
-                            ToggleButton {
-                                offImage: './images/FM_Icons_FM.svg'
-                                onImage: './images/FM_Icons_AM.svg'
-                                onCheckedChanged: {
-                                    radio.band = checked ? Radio.AM : Radio.FM
-                                    radio.frequency = radio.minimumFrequency
-                                }
+                            Image {
+                                source: './images/FM_Icons_FM.svg'
                             }
+//                            ToggleButton {
+//                                offImage: './images/FM_Icons_FM.svg'
+//                                onImage: './images/FM_Icons_AM.svg'
+//                                onCheckedChanged: {
+//                                    radio.band = checked ? Radio.AM : Radio.FM
+//                                    radio.frequency = radio.minimumFrequency
+//                                }
+//                            }
                         }
                         ColumnLayout {
                             anchors.fill: parent
