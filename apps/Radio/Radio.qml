@@ -181,22 +181,16 @@ ApplicationWindow {
                 anchors.rightMargin: 50
                 clip: true
                 header: Label { text: 'PRESETS'; opacity: 0.5 }
-                model: ListModel {
-                    ListElement {
-                        title: 'Inter FM'
-                        band: Radio.FM
-                        frequency: 76100000
-                    }
+                model: presetModel
 
-                }
                 delegate: MouseArea {
                     width: ListView.view.width
                     height: ListView.view.height / 4
 
                     onClicked: {
-                        radio.band = model.band
-                        radio.frequency = model.frequency
-                        radio.title = model.title
+                        radio.band = model.modelData.band
+                        radio.frequency = model.modelData.frequency
+                        radio.title = model.modelData.title
                     }
 
                     RowLayout {
@@ -219,7 +213,7 @@ ApplicationWindow {
                         }
                         Image {
                             source: {
-                                switch (model.band) {
+                                switch (model.modelData.band) {
                                 case Radio.FM:
                                     return './images/FM_Icons_FM.svg'
                                 case Radio.AM:

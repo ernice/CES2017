@@ -11,7 +11,8 @@ config_libhomescreen {
     DEFINES += HAVE_LIBHOMESCREEN
 }
 
-SOURCES = main.cpp
+HEADERS = PresetDataObject.h
+SOURCES = main.cpp PresetDataObject.cpp
 
 RESOURCES += \
     radio.qrc \
