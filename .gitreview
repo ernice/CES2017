@@ -2,3 +2,4 @@
 host=gerrit.automotivelinux.org
 port=29418
 project=AGL/DemoApps/CES2017
+defaultbranch=chinook
